@@ -75,6 +75,7 @@
 				<checkbox-item label="The Arts Research" value="161"/>
 				<checkbox-item label="Alumni" value="187"/>
 				<checkbox-item label="Magazine" value="188"/>
+				<checkbox-item label="Artificial Intelligence" value="190"/>
 			</text>
 		</group>
 	</group>
