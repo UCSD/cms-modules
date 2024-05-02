@@ -1,0 +1,45 @@
+<system-data-structure>
+	<text default="callout-content-2-and-3" field-id="cc9358940aaf692c3ea1383d771549a1" identifier="module-id" required="true" restrict-to-groups="Administrator"/>
+	<group identifier="callout-content-2-and-3" label="Callout Content 2, 3 and 4">
+		<text field-id="cc9358940aaf692c3ea1383dc7f92286" identifier="headline" label="Headline"/>
+		<text field-id="cc9358940aaf692c3ea1383da14647bc" identifier="headline-br" label="Headline Break"/>
+		<text field-id="cc9358940aaf692c3ea1383dfb011478" identifier="blurb" label="Blurb" multi-line="true"/>
+		<text field-id="cc9358940aaf692c3ea1383d4c9237a7" identifier="button-text" label="Button Text"/>
+		<text default="Internal" field-id="cc9358940aaf692c3ea1383d6668611b" identifier="link-type" label="Link Type" type="radiobutton">
+			<radio-item show-fields="callout-content-2-and-3/internal-link" value="Internal"/>
+			<radio-item show-fields="callout-content-2-and-3/external-link" value="External"/>
+		</text>
+		<asset field-id="cc9358940aaf692c3ea1383dcbf5e954" identifier="internal-link" label="Internal Link" type="page,file,symlink"/>
+		<text field-id="cc9358940aaf692c3ea1383de3a6b6c9" identifier="external-link" label="External Link"/>
+		<group identifier="callout-box" label="Callout Box" maximum-number="4" minimum-number="2" multiple="true">
+			<text field-id="cc9358940aaf692c3ea1383dbd6dcedb" identifier="headline" label="Headline"/>
+			<text field-id="cc9358940aaf692c3ea1383dd741f91a" identifier="blurb" label="Blurb" multi-line="true"/>
+			<text field-id="cc9358940aaf692c3ea1383d0766734a" identifier="button-text" label="Button Text"/>
+			<text default="Internal" field-id="cc9358940aaf692c3ea1383d192b76ec" identifier="link-type" label="Link Type" type="radiobutton">
+				<radio-item show-fields="callout-content-2-and-3/callout-box/internal-link" value="Internal"/>
+				<radio-item show-fields="callout-content-2-and-3/callout-box/external-link" value="External"/>
+			</text>
+			<asset field-id="cc9358940aaf692c3ea1383dc5c45942" identifier="internal-link" label="Internal Link" type="page,file,symlink"/>
+			<text field-id="cc9358940aaf692c3ea1383d00e33354" identifier="external-link" label="External Link"/>
+		</group>
+		<group identifier="background" label="Background">
+			<text default="bg-blue-opaque" field-id="102ccd1a0aaf69f56386ebf417e47035" help-text="Modifies the text box background color" identifier="text-bg" label="Text Box Color" type="dropdown">
+				<dropdown-item label="Blue - Opaque" value="bg-blue-opaque"/>
+				<dropdown-item label="Blue - Semi-transparent" value="bg-blue-translucent"/>
+				<dropdown-item label="Navy - Opaque" value="bg-navy-opaque"/>
+				<dropdown-item label="Navy - Semi-transparent" value="bg-navy-translucent"/>
+			</text>
+			<text default="custom-image" field-id="aea8d7a60aaf692c748020de04b75f61" identifier="background-type" label="Background Options:" type="radiobutton">
+				<radio-item label="Custom Image" show-fields="callout-content-2-and-3/background/image, callout-content-2-and-3/background/module-text-color" value="custom-image"/>
+				<radio-item label="White Background" value="white"/>
+				<radio-item label="Sand Background" value="sand"/>
+				<radio-item label="Grit Texture Background" value="bg-orbs"/>
+			</text>
+			<text default="light" field-id="ed94833e0aaf6b3a4102e87a06170122" help-text="Light is recommended for darker images. Dark is recommended for lighter images." identifier="module-text-color" label="Text Color" type="radiobutton">
+				<radio-item label="Light" value="light"/>
+				<radio-item label="Dark" value="dark"/>
+			</text>
+			<asset field-id="cc9358940aaf692c3ea1383d1dea2457" identifier="image" label="Image" required="true" type="file"/>
+		</group>
+	</group>
+</system-data-structure>

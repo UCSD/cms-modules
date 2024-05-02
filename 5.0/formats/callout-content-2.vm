@@ -1,0 +1,119 @@
+#macro(CalloutContentTwoThree)
+
+            #set( $CallContTwoThree = $_XPathTool.selectNodes($node, 'default/content/system-data-structure/callout-content-2-and-3'))
+            ##set( $CallContTwoThree = $_XPathTool.selectNodes($contentRoot, '//system-data-structure/callout-content-2-and-3'))
+            
+            
+            #set ($CCTTHeadline = $_XPathTool.selectSingleNode($CallContTwoThree, 'headline').text)
+            #set ($CCTTHeadlineBr = $_XPathTool.selectSingleNode($CallContTwoThree, 'headline-br').text)
+            #set ($CCfBlurb = $_XPathTool.selectSingleNode($CallContTwoThree, "blurb").text)
+            #set ($CCLButtonText = $_XPathTool.selectSingleNode($CallContTwoThree, "button-text").text)
+            #set ($CCLinkType = $_XPathTool.selectSingleNode($CallContTwoThree, "link-type").text)
+            #if ($CCLinkType == "Internal")
+                #set ($CCLinkUrl = $_XPathTool.selectSingleNode($CallContTwoThree, "internal-link").getChild("link").text)
+            #else
+                #set ($CCLinkUrl = $_XPathTool.selectSingleNode($CallContTwoThree, "external-link").text)
+            #end
+            #set( $CallBoxes = $_XPathTool.selectNodes($CallContTwoThree, 'callout-box'))
+            
+            #set ($CallbgImgOption = $_XPathTool.selectSingleNode($CallContTwoThree, 'background/background-type').text)
+            #set ($CCTextBgColor = $_XPathTool.selectSingleNode($CallContTwoThree, 'background/text-bg').text)
+            #set ($CCModuleTextColor = $_XPathTool.selectSingleNode($CallContTwoThree, 'background/module-text-color').text)
+            
+            #set ($CallbgImgType = '')
+            #set ($panelColor = '')
+            
+            #if ($CallbgImgOption == "white")
+                #set ($CallbgImgType = 'ct4-light-bg')
+                #set ($panelColor = ' panel-darker')
+            #elseif($CallbgImgOption == "sand")
+                #set ($CallbgImgType = 'ct4-sand-bg')
+                #set ($panelColor = ' panel-darker')
+            #elseif($CallbgImgOption == "bg-orbs")
+                #set ($CallbgImgType = 'jumbotron-orbs-1')
+            #elseif($CallbgImgOption == "custom-image")
+                #if($CCModuleTextColor == 'dark')
+                    #set ($CallbgImgType = 'ct4-dark-text')
+                #end
+            #end
+            
+            #set ($CallbgImg = $_XPathTool.selectSingleNode($CallContTwoThree, 'background/image/path').text)
+        
+            #foreach($CallBox in $CallBoxes)
+        
+                #set($colCount = $foreach.count)
+        
+                #if($colCount == 2 || $colCount == 4  )
+        
+                    #set($JumboClass = "jumbotron-culture")
+                    #set($ColSize = "col-md-6")
+                    #set($DataMod = "callout-content-two")
+        
+                #elseif($colCount >= 3)
+        
+                    #set($JumboClass = "jumbotron-callout-three jumbotron-culture")
+                    #set($ColSize = "col-md-4")
+                    #set($DataMod = "callout-content-three")
+        
+                #end
+        
+            #end
+        
+            <section class="jumbotron side-image-white jumbotron-callout-content-two jumbotron-full-width $CallbgImgType" #if ($CallbgImgOption != "white" || $CallbgImgOption != "bg-orbs") style="background-image: url([system-asset]${CallbgImg}[/system-asset])"#end aria-label="Content Module">
+                
+              <div class="container">
+                <div class="row">
+                        <div class="col-md-8 text-indent">
+                            #if($CCTTHeadline !="")    
+                                <h2>$_EscapeTool.xml($CCTTHeadline) #if($CCTTHeadlineBr !="")<br/><span>$_EscapeTool.xml($CCTTHeadlineBr)</span>#end</h2>
+                            #end
+                    
+                            #if($CCfBlurb !="")  
+                                <p>$_EscapeTool.xml($CCfBlurb)</p>
+                            #end
+                        </div>
+                        #if($CCLButtonText !="")
+                        <div class="col-md-4">
+                            <p class="text-lg-right">
+                                <a href="$_EscapeTool.xml($CCLinkUrl)"><button type="button" class="btn btn-lg btn-default" role="button">$_EscapeTool.xml($CCLButtonText)</button></a>
+                            </p>
+                        </div>    
+                        #end
+                </div>
+                <div class="row">
+        
+                #foreach($CallBox in $CallBoxes)
+                #set ($CbxHeadline = "")
+                #set ($CbxHeadline = $CallBox.getChild("headline").text)
+                #set ($CbxBlurb = $CallBox.getChild("blurb").text)
+                #set ($CbxButton = $CallBox.getChild("button-text").text)
+                #set ($CbxLinkCheck = $CallBox.getChild("link-type").text)
+                #if ($CbxLinkCheck == "Internal")
+                    #set ($CbxButtonUrl = $CallBox.getChild("internal-link").getChild("link").text)
+                #else
+                    #set ($CbxButtonUrl = $CallBox.getChild("external-link").text)
+                #end
+        
+                  <div class="$ColSize">
+                    <div class="panel panel-primary${panelColor} ${CCTextBgColor}">
+                      <div class="cta-two-three panel-body panel-body">
+                          
+                        #if($CbxHeadline !="")
+                        <h3>$_EscapeTool.xml($CbxHeadline)</h3>
+                        #end
+                        <p class="panel-text">$_EscapeTool.xml($CbxBlurb)</p>
+                        #if($CbxButton !="")
+                        <p>
+                          <a href="$_EscapeTool.xml($CbxButtonUrl)" class="text-link">$_EscapeTool.xml($CbxButton)</a>
+                        </p>
+                        #end
+                      </div>
+                    </div>
+                  </div>
+                  #end
+        
+                </div>
+              </div>
+            </section>
+        
+#end
