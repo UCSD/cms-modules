@@ -1,0 +1,117 @@
+#macro(TexImgCta)
+        
+            #set( $TextImgCTA = $_XPathTool.selectSingleNode($node, 'default/content/system-data-structure/text-image-cta'))
+            ##set( $TextImgCTA = $_XPathTool.selectSingleNode($contentRoot, '//system-data-structure/text-image-cta'))
+            #set ($TiCHeadline = $TextImgCTA.getChild("headline").text)
+            #set ($TicBlurb = $TextImgCTA.getChild("blurb"))
+            #set ($TicButton = $TextImgCTA.getChild("button").text)
+            #set ($TicLinkCheck = $TextImgCTA.getChild("link-type").text)
+            #if ($TicLinkCheck == "Internal")
+                #set ($TicButtonURL = $TextImgCTA.getChild("internal-link").getChild("link").text)
+            #else
+                #set ($TicButtonURL = $TextImgCTA.getChild("external-link").text)
+            #end
+            #set ($TiCImgPos = $TextImgCTA.getChild("img-pos").text)
+            #set ($TiCImgStyle = $TextImgCTA.getChild("style").text)
+            #set ($TiCcontType = $TextImgCTA.getChild("content-type").text)
+            #set ($TiCoverlayType = $TextImgCTA.getChild("overlay-type").text)
+            #set ($TiimgAlt = $TextImgCTA.getChild("img-alt").text)
+            #set ($TicImage = $TextImgCTA.getChild("image").getChild("path").text)
+            
+            #if($TiCImgStyle == "Dark")
+                #set($TiCImgStyleClass = "jumbotron-sand")
+            #else
+                #set($TiCImgStyleClass = "side-image-white")
+            #end
+        
+            
+            
+            #set($BtnClass = "btn-default")
+            
+            #if($TiCcontType == "Trident Graphic")
+             
+              #set($TiCImgStyleClass = "jumbotron-full-width side-image-white trident")
+              #set($ImgContClass = "")
+              #set($TextContClass = "col-md-8")
+              #set($BtnClass = "btn-primary")
+              #set($TiCImgPos = "Right")
+             
+            #end
+            
+            #if($TiCcontType == "Grit Circles")
+              #set($TiCImgStyleClass = "jumbotron-full-width side-image-white bubbles")
+              #set($ImgContClass = "")
+              #set($TextContClass = "col-md-8")
+              #set($BtnClass = "btn-primary")
+              #set($TiCImgPos = "Right")
+            #end  
+            
+            #set($OverlayClass = "")
+            #if($TiCoverlayType == "Overlay 1")
+              #set($OverlayClass = "overlay-glow-1")
+              #elseif($TiCoverlayType == "Overlay 2")
+                  #set($OverlayClass = "overlay-glow-2")
+            #end 
+          
+            <div class="jumbotron $TiCImgStyleClass#if($OverlayClass) $OverlayClass#end">
+                <div class="container">
+                    <div class="row">
+                        
+                        ##Left Side
+                        #macro(ctaContent)
+                            <div class="col-md-6">
+                              #if($TiCHeadline !="") 
+                              <h2>$_EscapeTool.xml($TiCHeadline)</h2>
+                              #end
+                              <p>$_SerializerTool.serialize($TicBlurb, true)</p>
+                              #if($TicButton !="")<p><a class="btn $BtnClass" href="$_EscapeTool.xml($TicButtonURL)">$_EscapeTool.xml($TicButton)</a></p>#end
+                            </div>
+                        #end
+                        
+                        ##right Side
+                        #macro(ctaMedia)
+                            <div class="col-md-6">
+                                #if($TiCcontType == "Image")
+                                <figure>
+                        	    	<img src="$_EscapeTool.xml($TicImage)" class="img-responsive" alt="$_EscapeTool.xml($TiimgAlt)" />
+                        	    </figure>
+                        	    #elseif($TiCcontType == "WYSIWYG")
+                        	    
+                        	        #set ($TiWYSIWYG = $TextImgCTA.getChild("wysiwyg"))
+                        	    
+                        	    $_SerializerTool.serialize($TiWYSIWYG, true)
+                        	    
+                        	    #elseif($TiCcontType == "Video Embed")
+                        	    
+                        	        #set ($TiVideo = $TextImgCTA.getChild("video").value)
+                        	    
+                        	   <div class="embed-video">
+                        	       <!--#protect
+                        	      $TiVideo
+                        	        #protect-->
+                        	   </div>
+                        	    
+                        	    #else
+    
+                        	    #end
+                            </div>
+                        #end
+                        
+                        #if($TiCImgPos =="Right")
+
+                            #ctaContent
+                            #ctaMedia
+                    
+                        #elseif($TiCImgPos =="Left")
+                    
+                            #ctaMedia
+                            #ctaContent
+                            
+                        #end
+                        
+
+                    </div>
+                </div>
+              </div>
+        
+#end

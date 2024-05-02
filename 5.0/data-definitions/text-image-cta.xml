@@ -1,0 +1,30 @@
+<system-data-structure>
+	<text default="text-image-cta" field-id="8f6cfbf30aaf69f545db021cd291f36c" identifier="module-id" required="true" restrict-to-groups="Administrator"/>
+	<group identifier="text-image-cta" label="Text Image CTA">
+		<text field-id="8f6cfbf30aaf69f545db021c84cf3f7c" identifier="headline" label="Headline"/>
+		<text field-id="8f6cfbf30aaf69f545db021c692c39bf" identifier="blurb" label="Blurb" multi-line="true"/>
+		<text field-id="8f6cfbf30aaf69f545db021ced2a8767" identifier="button" label="Button Text"/>
+		<text default="Internal" field-id="8f6cfbf30aaf69f545db021c50d299e5" identifier="link-type" label="Link Type" type="radiobutton">
+			<radio-item show-fields="text-image-cta/internal-link" value="Internal"/>
+			<radio-item show-fields="text-image-cta/external-link" value="External"/>
+		</text>
+		<asset field-id="8f6cfbf30aaf69f545db021cf4bc1742" identifier="internal-link" label="Internal Link" type="page,file,symlink"/>
+		<text field-id="8f6cfbf30aaf69f545db021c5c4b1d08" identifier="external-link" label="External Link"/>
+		<text default="Light" field-id="8f6cfbf30aaf69f545db021c78e6713b" identifier="style" label="Style" type="radiobutton">
+			<radio-item value="Light"/>
+			<radio-item value="Dark"/>
+		</text>
+		<text default="Left" field-id="8f6cfbf30aaf69f545db021c27cdf677" identifier="img-pos" label="Media Position" type="radiobutton">
+			<radio-item value="Left"/>
+			<radio-item value="Right"/>
+		</text>
+		<text default="Image" field-id="8f6cfbf30aaf69f545db021c566c83c0" identifier="content-type" label="Media Type" type="radiobutton">
+			<radio-item show-fields="text-image-cta/image, text-image-cta/img-alt, text-image-cta/style, text-image-cta/img-pos" value="Image"/>
+			<radio-item show-fields="text-image-cta/wysiwyg, text-image-cta/style, text-image-cta/img-pos" value="WYSIWYG"/>
+			<radio-item value="Triton Graphic"/>
+		</text>
+		<asset field-id="8f6cfbf30aaf69f545db021c19286057" identifier="image" label="Image" type="file"/>
+		<text field-id="8f6cfbf30aaf69f545db021c42cac0e4" help-text="For Accessibility Purposes " identifier="img-alt" label="Image Description (Alt Text)"/>
+		<text field-id="8f6cfbf30aaf69f545db021cbf34cada" identifier="wysiwyg" label="WYSIWYG" wysiwyg="true"/>
+	</group>
+</system-data-structure>
