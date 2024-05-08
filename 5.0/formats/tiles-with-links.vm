@@ -1,0 +1,102 @@
+#macro(TilesWithLinks)
+
+	#set( $tileLinks = $_XPathTool.selectSingleNode($node, 'default/content/system-data-structure/tiles-with-links-blocks'))
+	#set( $tiles = $_XPathTool.selectNodes($tileLinks, 'panel'))
+	
+	#set( $moduleBgSettings = $_XPathTool.selectSingleNode($tileLinks, 'background'))
+	#set( $moduleBgColor = $_XPathTool.selectSingleNode($moduleBgSettings, 'background-color').text)
+	
+	#set ($tileLinksTopHeadline = $_XPathTool.selectSingleNode($tileLinks, 'headline').text)
+    #set ($tileLinksTopHeadlineBr = $_XPathTool.selectSingleNode($tileLinks, 'headline-br').text)
+    #set ($tileLinksBlurb = $_XPathTool.selectSingleNode($tileLinks, "blurb").text)
+    #set ($tileLinksButtonText = $_XPathTool.selectSingleNode($tileLinks, "button-text").text)
+    #set ($tileLinksLinkType = $_XPathTool.selectSingleNode($tileLinks, "link-type").text)
+    #if ($tileLinksLinkType == "Internal")
+        #set ($tileLinksUrl = $_XPathTool.selectSingleNode($tileLinks, "internal-link").getChild("link").text)
+    #else
+        #set ($tileLinksUrl = $_XPathTool.selectSingleNode($tileLinks, "external-link").text)
+    #end
+	
+	<section aria-label="Tiles with Links Module" class="jumbotron jumbotron-tile-links ${moduleBgColor}" data-module="tiles-with-links">
+   	<div class="container">
+   	    <div class="row">
+            <div class="col-md-8 text-indent">
+                #if($tileLinksTopHeadline !="")    
+                    <h2>$_EscapeTool.xml($tileLinksTopHeadline) #if($tileLinksTopHeadlineBr !="")<br/><span>$_EscapeTool.xml($tileLinksTopHeadlineBr)</span>#end</h2>
+                #end
+        
+                #if($tileLinksBlurb !="")  
+                    <p>$_EscapeTool.xml($tileLinksBlurb)</p>
+                #end
+            </div>
+            #if($tileLinksButtonText !="")
+            <div class="col-md-4">
+                <p class="text-lg-right">
+                    <a href="$_EscapeTool.xml($tileLinksUrl)">
+                        <button type="button" class="btn btn-lg btn-default" role="button">$_EscapeTool.xml($tileLinksButtonText)</button>
+                    </a>
+                </p>
+            </div>    
+            #end
+        </div>
+        <div class="row tiles-row">
+    	   	<div class="flex tiles">
+    	
+    			#BuildBlocksList($tiles)
+    			
+    	   	</div>
+	   	</div>
+   	</div>	
+	</section>
+	
+#end
+
+#macro(BuildBlocksList $tiles)
+
+    #foreach($tile in $tiles)
+				
+		#set ($tileHeadline = $tile.getChild("headline").text)
+		#set ($tileLink = $tile.getChild("link").text)
+		
+	    #set ($tileImageChoice = $tile.getChild("image-background").text)
+	    #if ($tileImageChoice == "custom")
+		    #set ($tileImage = $tile.getChild("image").getChild("path").text)
+		#else
+		    #set ($tileImageBackgroundColor = $tile.getChild("link-background-color").text)
+		#end
+		
+		#set ($tileLink = "")
+        #set ($tileLinkType = $tile.getChild("link-type").text)
+        #if ($tileLinkType == "External")
+            #set ($tileLink = $tile.getChild("external-link").text)
+        #else
+            #set ($tileLink = $tile.getChild("internal-link").getChild("path").value)
+            #if  ($tileLink == "/")
+                #set($tileLink ="")
+            #end
+        #end
+	
+       	<div class="wrapper #if ($tileImageChoice == 'color')${tileImageBackgroundColor}#end">
+       	    #if ($tileImageChoice == "custom")
+       		    <img class="background-image" src="$_EscapeTool.xml($tileImage)" alt="" />	
+   		    #else
+   		        <div class="background-image"></div>
+   		    #end
+   		    #if($tileLinksTopHeadline !="")
+   		        <h3>
+        	   		<a href="$_EscapeTool.xml($tileLink)">
+        		   		$_EscapeTool.xml($tileHeadline)
+        		   	</a>
+        	   	</h3>
+    	   	#else
+    	   	    <h2>
+        	   		<a href="$_EscapeTool.xml($tileLink)">
+        		   		$_EscapeTool.xml($tileHeadline)
+        		   	</a>
+        	   	</h2>
+	   	    #end
+       	</div>	
+	
+	#end
+
+#end

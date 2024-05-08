@@ -1,0 +1,42 @@
+<system-data-structure>
+	<text default="tiles-with-links" field-id="632e7e4b0aaf69f5215a8bae23d87090" identifier="module-id" required="true" restrict-to-groups="Administration"/>
+	<group identifier="tiles-with-links-blocks" label="Tiles with Link Text">
+		<text field-id="632e7e4b0aaf69f5215a8bae21aec13e" identifier="headline" label="Headline"/>
+		<text field-id="632e7e4b0aaf69f5215a8bae15031c24" identifier="headline-br" label="Headline Break"/>
+		<text field-id="632e7e4b0aaf69f5215a8baed83178f3" identifier="blurb" label="Blurb" multi-line="true"/>
+		<text field-id="632e7e4b0aaf69f5215a8bae674c2be1" identifier="button-text" label="Button Text"/>
+		<text default="Internal" field-id="632e7e4b0aaf69f5215a8bae90d9a211" identifier="link-type" label="Link Type" type="radiobutton">
+			<radio-item show-fields="tiles-with-links-blocks/internal-link" value="Internal"/>
+			<radio-item show-fields="tiles-with-links-blocks/external-link" value="External"/>
+		</text>
+		<asset field-id="632e7e4b0aaf69f5215a8bae2f8920f8" identifier="internal-link" label="Internal Link" type="page,file,symlink"/>
+		<text field-id="632e7e4b0aaf69f5215a8baeaccd0583" identifier="external-link" label="External Link"/>
+		<group identifier="background" label="Background">
+			<text default="tile-module-white" field-id="632e7e4b0aaf69f5215a8bae83ee376e" help-text="Select a background color for the module" identifier="background-color" label="Background Color" type="radiobutton">
+				<radio-item label="White" value="tile-module-white"/>
+				<radio-item label="Sand" value="tile-module-sand"/>
+				<radio-item label="Navy" value="tile-module-navy"/>
+			</text>
+		</group>
+		<group identifier="panel" label="Tile" multiple="true">
+			<text field-id="632e7e4b0aaf69f5215a8bae834b132f" help-text="Enter the display text for the link" identifier="headline" label="Link Text" required="true"/>
+			<text default="Internal" field-id="632e7e4b0aaf69f5215a8bae7d6bbc04" identifier="link-type" label="Link Type" type="radiobutton">
+				<radio-item show-fields="tiles-with-links-blocks/panel/internal-link" value="Internal"/>
+				<radio-item show-fields="tiles-with-links-blocks/panel/external-link" value="External"/>
+			</text>
+			<text field-id="632e7e4b0aaf69f5215a8bae2cbc24b1" identifier="external-link" label="External Link"/>
+			<asset field-id="632e7e4b0aaf69f5215a8bae19a45f20" identifier="internal-link" label="Internal Link" type="page"/>
+			<text default="custom" field-id="632e7e4b0aaf69f5215a8bae02528d08" identifier="image-background" label="Background Image" type="radiobutton">
+				<radio-item label="Custom Image" show-fields="tiles-with-links-blocks/panel/image" value="custom"/>
+				<radio-item label="Default (pre-canned backgrounds)" show-fields="tiles-with-links-blocks/panel/link-background-color" value="color"/>
+			</text>
+			<asset field-id="632e7e4b0aaf69f5215a8bae781b2eac" help-text="Select a background image for the tile" identifier="image" label="Tile Background Image" type="file"/>
+			<text default="tile-blue-bg" field-id="632e7e4b0aaf69f5215a8bae819157f6" help-text="Select a background color for the tile" identifier="link-background-color" label="Tile Background Color" type="dropdown">
+				<dropdown-item label="Blue" value="tile-blue-bg"/>
+				<dropdown-item label="Navy" value="tile-navy-bg"/>
+				<dropdown-item label="Turquoise" value="tile-turquoise-bg"/>
+				<dropdown-item label="Yellow" value="tile-yellow-bg"/>
+			</text>
+		</group>
+	</group>
+</system-data-structure>
