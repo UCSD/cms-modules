@@ -1,7 +1,7 @@
 <system-data-structure>
 	<text default="tiles-with-links" field-id="632e7e4b0aaf69f5215a8bae23d87090" identifier="module-id" required="true" restrict-to-groups="Administration"/>
 	<group identifier="tiles-with-links-blocks" label="Tiles with Link Text">
-		<text field-id="632e7e4b0aaf69f5215a8bae21aec13e" identifier="headline" label="Headline"/>
+		<text field-id="632e7e4b0aaf69f5215a8bae21aec13e" help-text="Formatted as h2." identifier="headline" label="Headline"/>
 		<text field-id="632e7e4b0aaf69f5215a8bae15031c24" identifier="headline-br" label="Headline Break"/>
 		<text field-id="632e7e4b0aaf69f5215a8baed83178f3" identifier="blurb" label="Blurb" multi-line="true"/>
 		<text field-id="632e7e4b0aaf69f5215a8bae674c2be1" identifier="button-text" label="Button Text"/>
@@ -30,7 +30,7 @@
 				<radio-item label="Custom Image" show-fields="tiles-with-links-blocks/panel/image" value="custom"/>
 				<radio-item label="Default (pre-canned backgrounds)" show-fields="tiles-with-links-blocks/panel/link-background-color" value="color"/>
 			</text>
-			<asset field-id="632e7e4b0aaf69f5215a8bae781b2eac" help-text="Select a background image for the tile" identifier="image" label="Tile Background Image" type="file"/>
+			<asset field-id="632e7e4b0aaf69f5215a8bae781b2eac" help-text="550 x 370 pixels. No text." identifier="image" label="Tile Background Image" type="file"/>
 			<text default="tile-blue-bg" field-id="632e7e4b0aaf69f5215a8bae819157f6" help-text="Select a background color for the tile" identifier="link-background-color" label="Tile Background Color" type="dropdown">
 				<dropdown-item label="Blue" value="tile-blue-bg"/>
 				<dropdown-item label="Navy" value="tile-navy-bg"/>

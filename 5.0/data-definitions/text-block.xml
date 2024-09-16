@@ -1,7 +1,7 @@
 <system-data-structure>
 	<text default="text-block" field-id="8f6d003e0aaf69f545db021c429b7faa" identifier="module-id" required="true" restrict-to-groups="Administrator"/>
 	<group identifier="text-block" label="Text Block">
-		<text field-id="8f6d003e0aaf69f545db021c097fa9e1" identifier="headline" label="Headline"/>
+		<text field-id="8f6d003e0aaf69f545db021c097fa9e1" help-text="Formatted as h2." identifier="headline" label="Headline"/>
 		<text field-id="8f6d003e0aaf69f545db021c5f9f3b77" identifier="wysiwyg" label="WYSIWYG" wysiwyg="true"/>
 		<text default="Navy Blue, Grit" field-id="78abc2440aaf6b9871452c62ea73ea8c" identifier="style" label="Module Style" type="dropdown">
 			<dropdown-item label="Navy Blue, Grit" value="navy-grit"/>
@@ -9,7 +9,7 @@
 			<dropdown-item label="Navy Blue, Grit Orbs" value="navy-orbs"/>
 			<dropdown-item label="Custom Background Image" show-fields="text-block/custom-bg, text-block/overlay-color" value="Custom"/>
 		</text>
-		<asset field-id="caaa37640aaf6b9871452c628537c733" help-text="(with overlay)" identifier="custom-bg" label="Custom Background" type="file"/>
+		<asset field-id="caaa37640aaf6b9871452c628537c733" help-text="1200 x 410 pixels recommended as a starting point. Will vary based on amount of content. No text. Image overlay applied." identifier="custom-bg" label="Custom Background" type="file"/>
 		<text default="blue" field-id="102bb7820aaf69f56386ebf432793c96" identifier="overlay-color" label="Overlay Color" type="radiobutton">
 			<radio-item label="Blue" value="blue"/>
 			<radio-item label="Navy" value="navy"/>

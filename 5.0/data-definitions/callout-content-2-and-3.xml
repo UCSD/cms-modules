@@ -1,7 +1,7 @@
 <system-data-structure>
 	<text default="callout-content-2-and-3" field-id="cc9358940aaf692c3ea1383d771549a1" identifier="module-id" required="true" restrict-to-groups="Administrator"/>
 	<group identifier="callout-content-2-and-3" label="Callout Content 2, 3 and 4">
-		<text field-id="cc9358940aaf692c3ea1383dc7f92286" identifier="headline" label="Headline"/>
+		<text field-id="cc9358940aaf692c3ea1383dc7f92286" help-text="Formatted as h2." identifier="headline" label="Headline"/>
 		<text field-id="cc9358940aaf692c3ea1383da14647bc" identifier="headline-br" label="Headline Break"/>
 		<text field-id="cc9358940aaf692c3ea1383dfb011478" identifier="blurb" label="Blurb" multi-line="true"/>
 		<text field-id="cc9358940aaf692c3ea1383d4c9237a7" identifier="button-text" label="Button Text"/>
@@ -12,7 +12,7 @@
 		<asset field-id="cc9358940aaf692c3ea1383dcbf5e954" identifier="internal-link" label="Internal Link" type="page,file,symlink"/>
 		<text field-id="cc9358940aaf692c3ea1383de3a6b6c9" identifier="external-link" label="External Link"/>
 		<group identifier="callout-box" label="Callout Box" maximum-number="4" minimum-number="2" multiple="true">
-			<text field-id="cc9358940aaf692c3ea1383dbd6dcedb" identifier="headline" label="Headline"/>
+			<text field-id="cc9358940aaf692c3ea1383dbd6dcedb" help-text="Formatted as h3." identifier="headline" label="Headline"/>
 			<text field-id="cc9358940aaf692c3ea1383dd741f91a" identifier="blurb" label="Blurb" multi-line="true"/>
 			<text field-id="cc9358940aaf692c3ea1383d0766734a" identifier="button-text" label="Button Text"/>
 			<text default="Internal" field-id="cc9358940aaf692c3ea1383d192b76ec" identifier="link-type" label="Link Type" type="radiobutton">
@@ -39,7 +39,7 @@
 				<radio-item label="Light" value="light"/>
 				<radio-item label="Dark" value="dark"/>
 			</text>
-			<asset field-id="cc9358940aaf692c3ea1383d1dea2457" identifier="image" label="Image" required="true" type="file"/>
+			<asset field-id="cc9358940aaf692c3ea1383d1dea2457" help-text="1200 x 410 pixels recommended for home page. No text." identifier="image" label="Image" required="true" type="file"/>
 		</group>
 	</group>
 </system-data-structure>
